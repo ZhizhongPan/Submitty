@@ -4304,6 +4304,7 @@ AND gc_id IN (
                   eg_submission_open_date AS submission_open_date,
                   eg_submission_due_date AS submission_due_date,
                   eg_has_due_date AS has_due_date,
+                  eg_has_due_date AS has_release_date,
                   eg_late_days AS late_days,
                   eg_allow_late_submission AS late_submission_allowed,
                   eg_precision AS precision
@@ -4964,6 +4965,7 @@ AND gc_id IN (
                 $gradeable->isStudentViewAfterGrades(),
                 $gradeable->isStudentSubmit(),
                 $gradeable->hasDueDate(),
+                $gradeable->hasReleaseDate(),
                 $gradeable->getAutogradingConfigPath(),
                 $gradeable->getLateDays(),
                 $gradeable->isLateSubmissionAllowed(),
@@ -4993,6 +4995,7 @@ AND gc_id IN (
                   eg_student_view_after_grades,
                   eg_student_submit,
                   eg_has_due_date,
+                  eg_has_release_date,
                   eg_config_path,
                   eg_late_days,
                   eg_allow_late_submission,
@@ -5004,7 +5007,7 @@ AND gc_id IN (
                   eg_thread_ids,
                   eg_has_discussion
                   )
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 $params
             );
         }
@@ -5110,6 +5113,7 @@ AND gc_id IN (
                     $gradeable->isStudentViewAfterGrades(),
                     $gradeable->isStudentSubmit(),
                     $gradeable->hasDueDate(),
+                    $gradeable->hasReleaseDate(),
                     $gradeable->getAutogradingConfigPath(),
                     $gradeable->getLateDays(),
                     $gradeable->isLateSubmissionAllowed(),
@@ -5139,6 +5143,7 @@ AND gc_id IN (
                       eg_student_view_after_grades=?,
                       eg_student_submit=?,
                       eg_has_due_date=?,
+                      eg_has_release_date=?,
                       eg_config_path=?,
                       eg_late_days=?,
                       eg_allow_late_submission=?,

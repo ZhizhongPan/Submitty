@@ -903,6 +903,7 @@ class AdminGradeableController extends AbstractController {
                     FileUtils::joinPaths($this->core->getConfig()->getSubmittyInstallPath(), 'more_autograding_examples/upload_only/config'),
                 'scanned_exam' => $details['scanned_exam'] === 'true',
                 'has_due_date' => true,
+                'has_release_date' => true,
 
                 //For discussion component
                 'discussion_based' => $discussion_clicked,
@@ -927,6 +928,7 @@ class AdminGradeableController extends AbstractController {
                 'peer_grade_set' => 0,
                 'late_submission_allowed' => true,
                 'has_due_date' => false,
+                'has_release_date' => true,
             ]);
         }
 
@@ -1033,7 +1035,8 @@ class AdminGradeableController extends AbstractController {
             'grade_inquiry_per_component_allowed',
             'discussion_based',
             'vcs',
-            'has_due_date'
+            'has_due_date',
+            'has_release_date'
         ];
 
         $discussion_ids = 'discussion_thread_id';

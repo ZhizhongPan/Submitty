@@ -81,6 +81,7 @@ use app\controllers\admin\AdminGradeableController;
  * @method void setDiscussionThreadId($discussion_thread_id)
  * @method int getActiveRegradeRequestCount()
  * @method void setHasDueDate($has_due_date)
+ * @method void setHasReleaseDate($has_release_date)
  * @method object[] getPeerGradingPairs()
  */
 class Gradeable extends AbstractModel {
@@ -177,6 +178,8 @@ class Gradeable extends AbstractModel {
     protected $precision = 0.0;
     /** @prop @var bool If this gradeable has a due date or not */
     protected $has_due_date = false;
+    /** @prop @var bool If this gradeable has a release date or not */
+    protected $has_release_date = false;
 
     /* Dates for all types of gradeables */
 
@@ -250,6 +253,7 @@ class Gradeable extends AbstractModel {
             $this->setStudentViewAfterGrades($details['student_view_after_grades']);
             $this->setStudentSubmit($details['student_submit']);
             $this->setHasDueDate($details['has_due_date']);
+            $this->setHasDueDate($details['has_release_date']);
             $this->setLateSubmissionAllowed($details['late_submission_allowed']);
             $this->setPrecision($details['precision']);
             $this->setRegradeAllowedInternal($details['regrade_allowed']);
@@ -818,6 +822,14 @@ class Gradeable extends AbstractModel {
      */
     public function hasDueDate() {
         return $this->has_due_date;
+    }
+
+    /**
+     * Gets if this gradeable has a release date or not for electronic gradeables
+     * @return bool
+     */
+    public function hasReleaseDate() {
+        return $this->has_release_date;
     }
 
     /**
